@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-
+app.use(helmet.hidePoweredBy()); // Hides 'X-Powered-By' header to reduce exposure of Express, enhancing security
 
 
 
