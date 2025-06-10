@@ -8,9 +8,8 @@ app.use(helmet.xssFilter());  // Enables X-XSS-Protection header in older browse
 app.use(helmet.noSniff());  // Sets X-Content-Type-Options to 'nosniff' to prevent MIME type sniffing and code execution
 app.use(helmet.ieNoOpen()); // Prevents IE from executing downloads in your site's context to reduce XSS risk
 const timeInSeconds = 90*24*60*60;
-app.use(helmet.hsts({maxAge: timeInSeconds, force: true}));
-
-
+app.use(helmet.hsts({maxAge: timeInSeconds, force: true})); // Enforces HTTPS by setting HSTS header for 90 days to prevent protocol downgrade attacks
+app.use(helmet.dnsPrefetchControl()); // Controls DNS prefetching to reduce privacy leaks and improve performance predictability
 
 
 
