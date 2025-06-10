@@ -3,10 +3,10 @@ const helmet = require('helmet');
 const app = express();
 
 app.use(helmet.hidePoweredBy()); // Hides 'X-Powered-By' header to reduce exposure of Express, enhancing security
-app.use(helmet.frameguard({action:'deny'}));
-app.use(helmet.xssFilter());
-app.use(helmet.noSniff());
-
+app.use(helmet.frameguard({action:'deny'}));  // Prevents the site from being embedded in iframes, protecting against clickjacking
+app.use(helmet.xssFilter());  // Enables X-XSS-Protection header in older browsers to reduce reflected XSS attacks
+app.use(helmet.noSniff());  // Sets X-Content-Type-Options to 'nosniff' to prevent MIME type sniffing and code execution
+app.use(helmet.ieNoOpen()); // Prevents IE from executing downloads in your site's context to reduce XSS risk
 
 
 
