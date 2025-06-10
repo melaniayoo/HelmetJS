@@ -7,7 +7,8 @@ app.use(helmet.frameguard({action:'deny'}));  // Prevents the site from being em
 app.use(helmet.xssFilter());  // Enables X-XSS-Protection header in older browsers to reduce reflected XSS attacks
 app.use(helmet.noSniff());  // Sets X-Content-Type-Options to 'nosniff' to prevent MIME type sniffing and code execution
 app.use(helmet.ieNoOpen()); // Prevents IE from executing downloads in your site's context to reduce XSS risk
-
+const timeInSeconds = 90*24*60*60;
+app.use(helmet.hsts({maxAge: timeInSeconds, force: true}));
 
 
 
