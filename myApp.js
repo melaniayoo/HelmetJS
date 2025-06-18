@@ -19,13 +19,13 @@ const app = express();
 // }));  // Restricts content sources to protect against XSS by allowing only self-hosted and trusted CDN scripts
 
 app.use(helmet({
-  contentSecurityPolicy: {    // enable and configure
+  contentSecurityPolicy: {   
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", 'trusted-cdn.com']
     }
   },
-  noCache: true     // disable
+  noCache: true    
 }));
 
 
